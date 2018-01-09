@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<h1>نصائح</h1>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg center-block" data-toggle="modal" data-target="#mynewadvice">
+نصيحة جديدة
+</button>
+<br>
+<!-- Modal -->
+<%= form_for(@advice, remote: true) do |form| %>
+<div class="modal fade" id="mynewadvice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">نصيحة !</h4>
+      </div>
+      <div class="modal-body">
+        <div class="field">
+          <%= form.text_field :title, id: :advice_title , class: "form-control advice_title" , placeholder: "النصيحة" %>
+        </div>
+        <div class="field">
+          <%= form.text_area :details, id: :advice_details , class: "form-control advice_details" , placeholder: "تفاصيل النصيحة"  %>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+
+        <%= submit_tag "حفظ النصيحة" ,class: "btn btn-primary" %>
+
+      <!--  <button type="button" class="btn btn-default" data-dismiss="modal">
+إلغاء      </button>
+-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <% end %>
+  <div  class="row" id="container_advices">
+ <%= render 'advice', advice: @advice %>
+</div>
+
+
+
+
+<%= link_to 'New Advice', new_advice_path %>

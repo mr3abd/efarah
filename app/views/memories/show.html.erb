@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag @memory.image.url(:medium) %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @memory.title %>
+</p>
+
+<%= link_to 'Edit', edit_memory_path(@memory) %> |
+<%= link_to 'Back', memories_path %>

@@ -1,0 +1,21 @@
+body ,p, ol, ul, td {
+  font-family: 'Cairo', sans-serif !important;
+  direction: rtl;
+}
+
+
+.navbar .nav , .navbar-header  {
+  float: right !important;
+}
+
+
+.close   {
+  float: left !important;
+}
+.modal-footer {
+  text-align: center !important;
+}
+
+.field{
+  margin-top: 7px;
+}
