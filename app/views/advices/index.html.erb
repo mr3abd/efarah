@@ -8,7 +8,7 @@
 </button>
 <br>
 <!-- Modal -->
-<%= form_for(@advice, remote: true) do |form| %>
+<%= form_with(model: @advice) do |form| %>
 <div class="modal fade" id="mynewadvice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -39,8 +39,9 @@
 
 
   <% end %>
+
   <div  class="row" id="container_advices">
- <%= render 'advice', advice: @advice %>
+ <%= render 'advice', advice: @advices %>
 </div>
 
 

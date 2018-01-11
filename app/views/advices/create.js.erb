@@ -1,6 +1,6 @@
-$("mynewadvice").modal('hide');
+$("#mynewadvice").modal('hide');
 $(".advice_title").val('');
 $(".advice_details").val('');
 
-$("#container_advices").append('<%= j render @advice %>');
+$("#container_advices").prepend('<%= j render @advice %>');
 $("#advice_<%= @advice.id %>").hide().fadeIn(1000);

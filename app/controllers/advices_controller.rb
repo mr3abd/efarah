@@ -25,11 +25,14 @@ class AdvicesController < ApplicationController
   # POST /advices
   # POST /advices.json
   def create
+
     @advice = Advice.new(advice_params)
 
     respond_to do |format|
       if @advice.save
+@advices = @advice
         format.html { redirect_to @advice, notice: 'Advice was successfully created.' }
+
         format.json { render :show, status: :created, location: @advice }
         format.js
       else
