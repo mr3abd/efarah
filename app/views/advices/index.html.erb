@@ -1,14 +1,21 @@
+
+
 <p id="notice"><%= notice %></p>
 
-<h1>نصائح</h1>
+<h1 class="center">نصائح</h1>
+<%= will_paginate @advices %>
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg center-block" data-toggle="modal" data-target="#mynewadvice">
 نصيحة جديدة
 </button>
 <br>
+
+
+
 <!-- Modal -->
-<%= form_with(model: @advice) do |form| %>
+<%= form_with(model: @advice, :html => {:id => "advice_form"})  do |form| %>
+
 <div class="modal fade" id="mynewadvice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -27,11 +34,14 @@
       </div>
       <div class="modal-footer">
 
+
         <%= submit_tag "حفظ النصيحة" ,class: "btn btn-primary" %>
 
       <!--  <button type="button" class="btn btn-default" data-dismiss="modal">
 إلغاء      </button>
 -->
+
+
       </div>
     </div>
   </div>
@@ -41,13 +51,11 @@
   <% end %>
 
   <div  class="row" id="container_advices">
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
  <%= render @advices %>
- </div>
 </div>
 
 
 
 
-<%= link_to 'New Advice', new_advice_path %>
+<%= will_paginate @advices %>

@@ -4,10 +4,28 @@ body ,p, ol, ul, td {
 }
 
 
+/* Start Nav */
+
 .navbar .nav , .navbar-header  {
   float: right !important;
 }
 
+.navbar-inverse {
+background-image: linear-gradient(to bottom, #368cbf 0%, #368cbf 100%) !important;
+background-color: #368cbf !important;
+border-color: #368cbf !important;
+}
+.navbar-inverse .navbar-brand {
+    color: #0c0c0c;
+}
+ 
+.navbar-inverse .navbar-nav > li > a {
+
+    color: #1E1407 ;
+
+}
+
+/* end Nav */
 
 .close   {
   float: left !important;
@@ -18,4 +36,9 @@ body ,p, ol, ul, td {
 
 .field{
   margin-top: 7px;
+}
+
+
+.panel-default {
+  margin-bottom: 6px;
 }

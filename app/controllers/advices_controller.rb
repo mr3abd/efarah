@@ -4,7 +4,7 @@ class AdvicesController < ApplicationController
   # GET /advices
   # GET /advices.json
   def index
-    @advices = Advice.all
+    @advices = Advice.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
     @advice = Advice.new
   end
 
@@ -31,7 +31,7 @@ class AdvicesController < ApplicationController
     respond_to do |format|
       if @advice.save
 @advices = @advice
-        format.html { redirect_to @advice, notice: 'Advice was successfully created.' }
+        format.html { redirect_to @advice, notice: 'تم انشاء نصيحة جديدة' }
 
         format.json { render :show, status: :created, location: @advice }
         format.js
@@ -51,9 +51,12 @@ class AdvicesController < ApplicationController
       if @advice.update(advice_params)
         format.html { redirect_to @advice, notice: 'Advice was successfully updated.' }
         format.json { render :show, status: :ok, location: @advice }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @advice.errors, status: :unprocessable_entity }
+        format.js
+
       end
     end
   end

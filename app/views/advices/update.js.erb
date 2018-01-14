@@ -1,0 +1,6 @@
+$("#myupdateadvice_<%= @advice.id %>").modal('hide');
+$("#advice_<%= @advice.id %>").fadeOut(500, function() {
+
+      $(this).remove();
+      $(#"container_advices").prepend('<%= j render @advice %>');
+});

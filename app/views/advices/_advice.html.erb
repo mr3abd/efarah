@@ -1,21 +1,58 @@
-
-
-
-
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
    <div class="panel panel-default" id="advice_<%= advice.id %>">
-    <div class="panel-heading" role="tab" id="heading_<%= advice.id %>">
+     <div class="panel-heading" role="tab" id="heading_<%= advice.id %>">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= advice.id %>" aria-expanded="false" aria-controls="collapse_<%= advice.id %>">
              <%= advice.title %>
         </a>
       </h4>
-    </div>
+     </div>
     <div id="collapse_<%= advice.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_<%= advice.id %>">
       <div class="panel-body">
-     <%= advice.details %>     <%= link_to 'Edit', edit_advice_path(advice), remote: true, :class => 'btn btn-sm btn-info' %>
+     <%= advice.details %>
+<br>
+       <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#myupdateadvice_<%= advice.id %>">
+تعديل
+       </button>
        <%= link_to 'Delete', advice, remote: true, :method => :delete, data: {confirm: "Delete advice: #{advice.title} #{advice.details}"}, :class => 'btn btn-sm btn-danger' %>
       </div>
     </div>
-  </div>
+</div>
+
+    <!-- Modal for Update -->
+    <%= form_with(model: advice, :method => :put, remote: true )  do |form| %>
+
+    <div class="modal fade" id="myupdateadvice_<%= advice.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">
+              تعديل النصيحة
+            </h4>
+          </div>
+          <div class="modal-body">
+            <div class="field">
+              <%= form.text_field :title, id: :advice_title , class: "form-control advice_title" , placeholder: "النصيحة" %>
+            </div>
+            <div class="field">
+              <%= form.text_area :details, id: :advice_details , class: "form-control advice_details" , placeholder: "تفاصيل النصيحة"  %>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+
+
+            <%= submit_tag "حفظ التعديل" ,class: "btn btn-primary" %>
+
+          <!--  <button type="button" class="btn btn-default" data-dismiss="modal">
+    إلغاء      </button>
+    -->
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+      <% end %>
